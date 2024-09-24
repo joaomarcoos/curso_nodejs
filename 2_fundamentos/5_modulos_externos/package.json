@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "5_modulos_externos": "file:",
     "minimist": "^1.2.8"
   }
 }
