@@ -18,6 +18,44 @@ const server = http.createServer((req, res) => {
         })
         return;
     }
+    
+    if(req.url === '/limpar' && req.method === 'POST'){
+
+        fs.stat('arquivo.txt', 'UTF-8', (err, data)=>{
+            if(err){
+                res.writeHead(500, {'Content-Type': 'text/html'});
+                res.end(`<h1>Erro ao verificar o arquivo</h1>`);
+                return;
+            }
+
+            if(data.size === 0){
+                res.writeHead(200, {'accept-charset':'UTF-8', 'Content-Type': 'text/html'});
+                res.end(`
+                    <h1>Arquivo já está vazio!</h1>
+                    <form action="/" method="GET">
+                        <button type="submit">Voltar</button>
+                    </form>
+                    `);
+                return;
+            }else{
+                fs.writeFile('arquivo.txt','', (err)=>{
+                    if(err){
+                        res.writeHead(500, {'Content-Type': 'text/html'});
+                        res.end(`<h1>Erro ao limpar o arquivo</h1>`);
+                    }else{
+                        res.writeHead(200, {'Content-Type': 'text/html',});
+                        res.end(`
+                            <h1>Arquivo limpo com sucesso!</h1>
+                            <form action="/" method="GET">
+                                <button type="submit">Voltar</button>
+                            </form>
+                            `);
+                    }
+                });
+            }
+        })
+        return;
+    }
 
     if(!name){
         fs.readFile('index.html', 'UTF-8', (err, data)=>{
