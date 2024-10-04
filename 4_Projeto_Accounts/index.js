@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 
 //modulos internos
-import fs from 'fs';
+import fs, { readFile } from 'fs';
 
 operacoes()
 
@@ -31,6 +31,10 @@ function operacoes() {
 
         if(action === 'Consultar saldo'){
             checkBalance();
+        }
+
+        if(action === 'Depositar'){
+            deposit();
         }
     }).catch((err) => console.error(err))
 
@@ -123,6 +127,57 @@ function checkBalance(){
         }else{
             console.log(chalk.red('Conta não encontrada!'))
             checkBalance();
+        }
+    })
+}
+
+function deposit(){
+    inquirer.prompt([
+        {
+            name:'deposit',
+            message: 'Qual o nome da sua conta?'
+        }
+    ]).then((answer)=>{
+        const accountName = answer['deposit'];
+
+        if(fs.existsSync(`accounts/${accountName}.json`)){
+            inquirer.prompt([
+                {
+                    name: 'value',
+                    message: 'Qual o valor do depósito?'
+                }
+            ]).then((answer)=>{
+                const value = parseFloat(answer['value']);
+                console.log(value);
+
+                readFile(`accounts/${accountName}.json`, (err, data)=>{
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+
+                    
+
+                    try{
+                        const accountData = JSON.parse(data);
+                        accountData.saldo += value;
+                        
+                        fs.writeFile(`accounts/${accountName}.json`, JSON.stringify(accountData), (err)=>{
+                            if(err){
+                                console.log(err);
+                            }else{
+                                console.log(chalk.green(`Depósito de ${value} realizado com sucesso!`))
+                                operacoes();
+                            }
+                        })
+                    }catch(err){
+                        console.error(err)
+                    }
+                })
+            })
+        }else{
+            console.log(chalk.red('Conta não encontrada!'))
+            deposit();
         }
     })
 }
