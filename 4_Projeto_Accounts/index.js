@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 
 //modulos internos
-import fs, { readFile } from 'fs';
+import fs, { readFile, write, writeFile } from 'fs';
 
 operacoes()
 
@@ -18,6 +18,7 @@ function operacoes() {
                 'Consultar saldo',
                 'Depositar',
                 'Sacar',
+                'Cancelar conta',
                 'Sair'
             ]
         }
@@ -35,6 +36,14 @@ function operacoes() {
 
         if(action === 'Depositar'){
             deposit();
+        }
+
+        if(action === 'Sacar'){
+            withdraw()
+        }
+
+        if(action === 'Cancelar conta'){
+            cancelAccount();
         }
     }).catch((err) => console.error(err))
 
@@ -156,8 +165,6 @@ function deposit(){
                         return;
                     }
 
-                    
-
                     try{
                         const accountData = JSON.parse(data);
                         accountData.saldo += value;
@@ -178,6 +185,86 @@ function deposit(){
         }else{
             console.log(chalk.red('Conta não encontrada!'))
             deposit();
+        }
+    })
+}
+
+// sacar
+
+function withdraw(){
+    inquirer.prompt([
+        {
+            name:'withdraw',
+            message: 'Qual o nome da sua conta?'
+        }
+    ]).then((answer)=>{
+        const accountName = answer['withdraw'];
+
+        if(fs.existsSync(`accounts/${accountName}.json`)){
+            inquirer.prompt([
+                {
+                    name: 'value',
+                    message: 'Qual o valor do saque?'
+                }
+            ]).then((answer)=>{
+                const value = parseFloat(answer['value']);
+                
+                readFile(`accounts/${accountName}.json`, (err, data)=>{
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+
+                    try{
+                        const accountData = JSON.parse(data);
+                        
+                        if(accountData.saldo >= value){
+                            accountData.saldo -= value
+
+                            writeFile(`accounts/${accountName}.json`, JSON.stringify(accountData), (err)=>{
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(chalk.green(`Saque de ${value} realizado com sucesso!`))
+                                    operacoes();
+                                }
+                            })
+                        }else{
+                            console.log(chalk.red('Saldo insuficiente!'))
+                            withdraw();
+                        }
+                    }catch(erro){
+                        console.error(err)
+                    }
+                })
+            })
+        }else{
+            console.log(chalk.red('Conta não encontrada!'))
+            withdraw();
+        }
+    })
+}
+
+//Excluir/Cancelar conta
+
+function cancelAccount(){
+    inquirer.prompt([
+        {
+            name:'cancelAccount',
+            message: 'Qual o nome da sua conta?'
+        }
+    ]).then((answer)=>{
+        const accountName = answer['cancelAccount'];
+    
+        if(fs.existsSync(`accounts/${accountName}.json`)){
+
+            fs.unlinkSync(`accounts/${accountName}.json`)
+
+            console.log(chalk.green(`Conta ${accountName} cancelada com sucesso!`))
+            operacoes();
+        }else{
+            console.log(chalk.red('Conta não encontrada!'))
+            cancelAccount();
         }
     })
 }
