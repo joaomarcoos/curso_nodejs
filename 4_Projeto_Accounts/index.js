@@ -45,6 +45,11 @@ function operacoes() {
         if(action === 'Cancelar conta'){
             cancelAccount();
         }
+
+        if(action === 'Sair'){
+            console.log(chalk.green('Obrigado por utilizar nosso banco, Até logo!'))
+            process.exit(0);
+        }
     }).catch((err) => console.error(err))
 
 }
