@@ -78,6 +78,7 @@ function buildAccount() {
         if (fs.existsSync(`accounts/${accountName}.json`)) {
             console.log(chalk.red('Nome da conta já existe'))
             buildAccount();
+            return;
         }
 
         try{
