@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "1_instalando_handlebars": "file:",
     "express": "^4.21.1",
     "express-handlebars": "^8.0.1",
     "nodemon": "^3.1.7"
