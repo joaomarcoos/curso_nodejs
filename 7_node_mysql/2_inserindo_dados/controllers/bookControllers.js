@@ -1,23 +1,52 @@
-const createBook = (req,res, connection)=>{
+import connection from "../index.js";
+
+const getAllBooks = async (req,res)=>{
+
+    const sql = 'SELECT * FROM book';
+    try{
+        const [result] = await connection.promise().query(sql)
+        res.render('getBooks', {data: result});
+    }catch(err){
+        console.error(err);
+        res.status(500).json({ message: "Internal Server Error" });
+        return;
+    }
+}
+
+const createBook = async (req, res) => {
 
     // res.json(200, {book: req.body});
 
-    const {title, name_author, pages} = req.body;
-    const book = {title, name_author, pages};
+    const { title, name_author, pages_qtd } = req.body;
+    const book = { title, name_author, pages_qtd };
 
-    const sql = `INSERT INTO books (title, name_author, pages) VALUES ('${title}', '${name_author}, '${pages}')`;
+    // console.log(book);
 
-    connection.query(sql, (err)=>{
-        if(err) throw err;
-        console.log("Book added successfully");
-        res.status(201).json({message: "Livro adicionado com sucesso"});
-        res.redirect('/');
-    })    
+    const sql = `INSERT INTO book (title, name_author, pages_qtd) VALUES ('${title}', '${name_author}', ${pages_qtd})`;
 
-    console.log(book);
+    try {
+        const [result] = await connection.promise().query(sql, [title, name_author, pages_qtd]);
+
+
+
+        if (result.affectedRows > 0) {
+            console.log("Book added successfully");
+            return res.redirect('/');
+        };
+
+        res.status(500).json({ error: "Error while inserting book" });
+        return;
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal Server Error" });
+        return;
+    }
+
 
 }
 
-export default{
+export default {
     createBook,
+    getAllBooks
 };

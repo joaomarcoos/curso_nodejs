@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserindo</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastre seu livro</h1>
+        <form action="/book/create" method="post">
+            <div class="form-control">
+                <label for="title">Título:</label>
+                <input type="text" name="title" placeholder="Digite o título do livro" required>
+            </div>
+            
+            <div class="form-control">
+                <label for="name_author">Nome do autor:</label>
+                <input type="text" name="name_author" placeholder="Digite a quantidade de páginas" required>
+            </div>
+
+            <div class="form-control">
+                <label for="pagesqtd">Número/Quantidade de Páginas:</label>
+                <input type="number" name="pages_qtd" placeholder="Digite a quantidade de páginas" required>
+            </div>
+
+            <div class="form-control">
+                <input type="submit" class="btn-submit" value="Cadastrar livro">
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+    
+        const showAlert = {{showAlert}}
+
+        window.document.addEventListener('DOMContentLoaded', (event){
+
+            event.preventDefault();
+
+            if (showAlert === true) {
+                alert('Livro cadastrado com sucesso!')
+            }
+        })
+
+</script>
+
+</html>

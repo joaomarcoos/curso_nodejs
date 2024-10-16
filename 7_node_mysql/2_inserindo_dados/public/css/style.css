@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 1em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -16,6 +17,11 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+h1{
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
 form{
@@ -35,16 +41,118 @@ form{
     gap: 2px;
 }
 
-.form-control input{
+.form-control input.btn-submit{
     padding: 1em;
+    font-weight: bold;
     border: 1px solid #ccc;
     border-radius: 4px;
+    cursor: pointer;
 }
+
+/* menu */
+
+.container-menu {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-cards{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+a{
+    display: flex;
+    width: 100%;
+    padding: 2em;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    background-color: aquamarine;
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+    font-size: 1.2rem;
+}
+
+/*
+    List Book
+*/
+
+.container-getBooks{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  .customers td, .customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .customers tr:hover {background-color: #ddd;}
+  
+  .customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #04AA6D;
+    color: white;
+  }
+  .customers td {
+    text-align: center;
+    font-weight: bold;
+  }
 
 
 @media (max-width: 768px) {
     form {
         width: 50%; /* Ajusta a largura para 50% em telas menores */
+    }
+
+    /* Menu */
+    .container-menu {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .container-cards{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cards{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        background-color: aquamarine;
     }
 }
 

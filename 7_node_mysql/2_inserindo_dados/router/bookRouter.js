@@ -1,10 +1,14 @@
 import express from 'express';
 import { Router } from 'express';
-import connection from "../index.js";
 import bookController from '../controllers/bookControllers.js'
 
-const route = Router();
+const router = Router();
 
-route.post('/create', (req, res)=> bookController.createBook(connection));
+router.get('/registerBook', (req, res) => {
+    res.render('registerBook');
+});
 
-export default route;
+router.get('/getBooks', bookController.getAllBooks);
+router.post('/create', bookController.createBook);
+
+export default router;

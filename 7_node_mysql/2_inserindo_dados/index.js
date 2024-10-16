@@ -1,7 +1,7 @@
 import express from 'express';
 import exphbs from 'express-handlebars';
 import mysql from 'mysql2';
-import bookRoute from './router/bookRouter.js'
+import bookRouter from './router/bookRouter.js'
 
 const app = express();
 app.use(express.json());
@@ -18,13 +18,14 @@ app.use(express.static('public'));
 
 // Config - Middlewares
 
-app.use('/book', bookRoute)
+app.use('/book', bookRouter)
 
 
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('menu');
 });
+
 
 // Config - Mysql
 const connection = mysql.createConnection({
