@@ -6,23 +6,38 @@
     <title>Lista de Livros</title>
 </head>
 <body>
-    <div class="container-getBooks">
-        <table class="customers">
-            <tr>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Número de Páginas</th>
-            </tr>
 
-            {{#each data}}
-            <tr>
-                
-                <td>{{this.title}}</td>
-                <td>{{this.name_author}}</td>
-                <td>{{this.pages_qtd}}</td>
-            </tr>
-            {{/each}}
-        </table>
+    <div class="container-getBooks">
+        <div class="sub-container">
+
+            <div class="container-input">
+                <a href="/">Voltar</a>
+                <form action="/book/searchBook">
+                    <label for="searchBook">Procurar livro:</label>
+                    <input type="search" name="term" placeholder="Digite o nume do livro">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+
+            <table class="customers">
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Número de Páginas</th>
+                </tr>
+
+                {{#each data}}
+                <tr>
+                    
+                    <td>{{this.title}}</td>
+                    <td>{{this.name_author}}</td>
+                    <td>{{this.pages_qtd}}</td>
+                </tr>
+                {{/each}}
+            </table>
+
+            <h2 style="margin: 50px;">{{message}}</h2>
+        </div>
     </div>
 </body>
 </html>

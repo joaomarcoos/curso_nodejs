@@ -13,6 +13,29 @@ const getAllBooks = async (req,res)=>{
     }
 }
 
+const searchBook = async (req, res) => {
+    //res.json({search: req.query})
+
+    const {term} = req.query;
+    const searchTerm = term;
+    // console.log(searchTerm);
+
+    const sql = `SELECT * FROM book WHERE title LIKE '%${searchTerm}%' OR name_author LIKE '%${searchTerm}%' OR pages_qtd LIKE '%${searchTerm}%'`;
+
+    try{
+        const [result] = await connection.promise().query(sql);
+
+        if (result.length === 0) {
+            return res.render('getBooks', {data: [], searchTerm, message: 'Livro não encontrado!' });
+        }
+        res.render('getBooks', {data: result, searchTerm});
+    }catch(err){
+        console.error(err);
+        res.status(500).json({ message: "Internal Server Error" });
+        return;
+    }
+}
+
 const createBook = async (req, res) => {
 
     // res.json(200, {book: req.body});
@@ -25,8 +48,8 @@ const createBook = async (req, res) => {
     const sql = `INSERT INTO book (title, name_author, pages_qtd) VALUES ('${title}', '${name_author}', ${pages_qtd})`;
 
     try {
-        const [result] = await connection.promise().query(sql, [title, name_author, pages_qtd]);
 
+        const [result] = await connection.promise().query(sql, [title, name_author, pages_qtd]);
 
 
         if (result.affectedRows > 0) {
@@ -46,7 +69,10 @@ const createBook = async (req, res) => {
 
 }
 
+
+
 export default {
     createBook,
-    getAllBooks
+    getAllBooks,
+    searchBook
 };

@@ -9,6 +9,8 @@ router.get('/registerBook', (req, res) => {
 });
 
 router.get('/getBooks', bookController.getAllBooks);
+router.get('/searchBook', bookController.searchBook);
 router.post('/create', bookController.createBook);
+
 
 export default router;
