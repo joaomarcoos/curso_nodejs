@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserindo</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container-link">
+            <a href="/">Voltar</a>
+        </div>
+        
+        <h1>Edite seu livro</h1>
+        <form action="" method="post">
+            <div class="form-control">
+                <label for="title">Título:</label>
+                <input type="text" name="title" placeholder="Digite o título do livro" value="{{book.title}}">
+            </div>
+            
+            <div class="form-control">
+                <label for="name_author">Nome do autor:</label>
+                <input type="text" name="name_author" placeholder="Digite a quantidade de páginas" value="{{book.name_author}}">
+            </div>
+
+            <div class="form-control">
+                <label for="pagesqtd">Número/Quantidade de Páginas:</label>
+                <input type="number" name="pages_qtd" placeholder="Digite a quantidade de páginas" value="{{book.pages_qtd}}">
+            </div>
+
+            <div class="form-control">
+                <input type="submit" class="btn-submit" value="Editar livro">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
