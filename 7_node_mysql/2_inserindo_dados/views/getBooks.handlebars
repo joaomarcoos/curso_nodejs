@@ -24,6 +24,7 @@
                     <th>Título</th>
                     <th>Autor</th>
                     <th>Número de Páginas</th>
+                    <th colspan="2"></th>
                 </tr>
 
                 {{#each data}}
@@ -32,7 +33,10 @@
                     <td>{{this.title}}</td>
                     <td>{{this.name_author}}</td>
                     <td>{{this.pages_qtd}}</td>
+                    <td>Atualizar</td>
+                    <td>Deletar</td>
                 </tr>
+                
                 {{/each}}
             </table>
 

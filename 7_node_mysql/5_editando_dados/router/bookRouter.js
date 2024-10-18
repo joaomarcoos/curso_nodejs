@@ -11,7 +11,9 @@ router.get('/registerBook', (req, res) => {
 router.get('/getBooks', bookController.getAllBooks);
 router.get('/searchBook', bookController.searchBook);
 router.post('/create', bookController.createBook);
-router.get('/editBook', bookController.ediBook);
+router.get('/getEditBook/:id', bookController.getEditBook);
+router.post('/updateBook/:id', bookController.updateBook);
+router.post('/deleteBook/:id', bookController.deleteBook);
 
 
 export default router;

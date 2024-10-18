@@ -24,6 +24,7 @@
                     <th>Título</th>
                     <th>Autor</th>
                     <th>Número de Páginas</th>
+                    <th colspan="2"></th>
                 </tr>
 
                 {{#each data}}
@@ -32,6 +33,12 @@
                     <td>{{this.title}}</td>
                     <td>{{this.name_author}}</td>
                     <td>{{this.pages_qtd}}</td>
+                    <td><a href="/book/getEditBook/{{this.id}}">Editar Livro</a></td>
+                    <td>
+                        <form action="/book/deleteBook/{{this.id}}" method="post" class="form-delete">
+                            <input type="submit" value="Excluir Livro" class="input-delete">
+                        </form>
+                    </td>
                 </tr>
                 {{/each}}
             </table>
