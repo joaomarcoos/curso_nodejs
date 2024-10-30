@@ -1,0 +1,9 @@
+
+<h1 id="title-listUsers">Usuários cadastrados</h1>
+<div href="" class="container">
+    {{#each users}}
+        <a href="/api/users/getUser/{{this.id}}" class="item">
+            <p>{{this.name}}</p>
+        </a>
+    {{/each}}
+</div>

@@ -77,146 +77,108 @@ form{
     cursor: pointer;
 }
 
-/* menu */
+#title-listUsers{
+    text-align: center;
+    padding: 2em;
+}
 
-.container-menu {
-    width: 100%;
-    height: 100vh;
+.container{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.container-cards{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 80%;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-}
-
-/*
-    List Book
-*/
-
-.container-getBooks{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.sub-container{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
     padding: 20px;
-
-}
-
-.container-input{
-    display: flex;
-    width: 80%;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    margin: 10px;
-    gap: 10px; 
-   
-}
-
-.container-input > a{
-    display: flex;
-    width: 100px;
-    padding: 10px;
-    flex-direction: row;
+    margin: 0 auto;
+    gap: 10px;
+    border-radius: 10px;
     text-align: center;
-    justify-content: center;
-    background-color: rgb(11, 151, 104);
-    text-decoration: none;
-    font-weight: bolder;
-    color: black;
-    font-size: 1.2rem;
-    border-radius: 5px;  
-   
 }
 
-.container-input > form > label{
-    font-weight: bold;
-}
-
-.container-input > form > input{
-    width: 100%;
-    padding: 1em;
+.container .item{
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.container-input > form > button {
-    padding: 1em;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-  }
-  
-  .customers td, .customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .customers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  .customers tr:hover {background-color: #ddd;}
-  
-  .customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    font-weight: bold;
-    background-color: rgb(11, 151, 104);
-    color: white;
-  }
-  .customers td {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .customers tr > td > a{
-
-    padding: 5px;
-  }
-.form-delete{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-  .form-delete .input-delete{
-    display: flex;
-    background-color: rgb(11, 151, 104);
-    width: 150px;
-    padding: 6px;
     border-radius: 5px;
-    border: none;
-    font-weight: bolder;
-    color: black;
-    font-size: 1.2rem;
-    cursor: pointer;
+    padding: 20px;
+    flex: 1 1 29%;
+    max-width: 29%;
+    height: 75px;
+    text-decoration: none;
+}
+.container .item:hover {
+    transform: scale(1.05);
   }
+
+/*User View*/
+
+.container-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10em;
+}
+
+.card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+
+  }
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.card button {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card button:hover {
+    background-color: #2980b9;
+}
+
+
+  .footer {
+    width: 100%;
+    padding: 30px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: red;
+    color: white;
+    text-align: center;
+ }
 
 
 @media (max-width: 768px) {
@@ -312,11 +274,6 @@ form{
         border-radius: 4px;
     }
 
-    .customers {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
 
 
 }

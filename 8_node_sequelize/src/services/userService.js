@@ -1,3 +1,4 @@
+import { raw } from 'express';
 import User from '../models/User.js'
 
 const createUser = async (data) =>{
@@ -5,11 +6,13 @@ const createUser = async (data) =>{
     return await User.create(data);
 }
 const getAllUsers = async () => {
-    return await User.find({});
+    return await User.findAll({raw: true});
 }
 
 const getUserById = async (id) => {
-    return await User.findById(id);
+    return await User.findOne({ raw: true,
+        where:{id: id}
+    });
 }
 
 const updateUser = async (id, data) => {

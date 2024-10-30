@@ -31,6 +31,10 @@ app.use(express.static('public'));
 
 app.use('/api', router);
 
+app.get('/', (req, res)=>{
+    res.render('home');
+})
+
 sequelize.sync().then(()=>{
     console.log('Database connected and synchronized');
 
