@@ -27,6 +27,7 @@
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^4.21.1",
+    "express-handlebars": "^8.0.1",
     "finalhandler": "^1.3.1",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",
@@ -52,6 +53,7 @@
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.46",
     "ms": "^2.0.0",
+    "mysql2": "^3.11.3",
     "negotiator": "^0.6.3",
     "object-inspect": "^1.13.2",
     "on-finished": "^2.4.1",
@@ -67,7 +69,7 @@
     "safer-buffer": "^2.1.2",
     "semver": "^7.6.3",
     "send": "^0.19.0",
-    "sequelize": "^6.37.4",
+    "sequelize": "^6.37.5",
     "sequelize-pool": "^7.1.0",
     "serve-static": "^1.16.2",
     "set-function-length": "^1.2.2",
@@ -86,8 +88,12 @@
     "wkx": "^0.5.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }

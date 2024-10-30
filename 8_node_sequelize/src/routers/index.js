@@ -3,6 +3,11 @@ import userController from '../controllers/userController.js';
 
 const router = express.Router();
 
+/*Rotas de paginação */
+router.get('/users/addUsers', (req, res)=>{
+    res.render('addUsers');
+})
+
 router.post('/users/createUser', userController.createUser);
 router.get('/users/getUsers', userController.getUsers);
 router.get('/users/getUser/:id', userController.getUserById);
