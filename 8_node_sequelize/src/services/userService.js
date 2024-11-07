@@ -1,9 +1,16 @@
-import { raw } from 'express';
 import User from '../models/User.js'
 
 const createUser = async (data) =>{
+    try{
+        const newsletterValue = data.newsletter === 'on'? true : false;
 
-    return await User.create(data);
+        data.newsletter = newsletterValue;
+
+        return await User.create(data);
+    }catch(error){
+        console.log('Erro: ', error.message);
+    }
+    
 }
 const getAllUsers = async () => {
     return await User.findAll({raw: true});
