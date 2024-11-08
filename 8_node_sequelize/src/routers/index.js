@@ -8,11 +8,13 @@ router.get('/users/addUsers', (req, res)=>{
     res.render('addUsers');
 })
 
+router.get('/users/getUpdateUser/:id', userController.getUpdateUser);
+
 router.post('/users/createUser', userController.createUser);
 router.get('/users/getUsers', userController.getUsers);
 router.get('/users/getUser/:id', userController.getUserById);
-router.put('/users/updateUser/:id', userController.updateUser);
-router.delete('/users/deleteUser/:id', userController.deleteUser);
+router.post('/users/updateUser/:id', userController.updateUser);
+router.post('/users/deleteUser/:id', userController.deleteUser);
 
 
 export default router;

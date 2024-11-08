@@ -4,6 +4,14 @@
         <h2>Usuário</h2>
         <p>Nome: {{user.name}}</p>
         <p>Profissão: {{user.occupation}}</p>
-        <button>Editar</button>
+
+        <div class="container-forms">
+            <form action="/api/users/getUpdateUser/{{user.id}}" class="form-edit">
+                <input type="submit" value="Editar">
+            </form>
+            <form action="/api/users/deleteUser/{{user.id}}" method="post" class="form-delete">
+                <input type="submit" value="Excluir">
+            </form>
+        </div>
     </div>
 </div>

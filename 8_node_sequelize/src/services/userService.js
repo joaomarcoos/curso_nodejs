@@ -23,7 +23,17 @@ const getUserById = async (id) => {
 }
 
 const updateUser = async (id, data) => {
-    const user = await User.findById(id);
+    const user = await User.findOne({
+        where:{id: id}
+    });
+
+    console.log(data);
+
+    if (Array.isArray(data.newsletter)) {
+        data.newsletter = data.newsletter.includes('on');
+    } else {
+        data.newsletter = data.newsletter === 'on';
+    }
 
     if(user){
         return await user.update(data);
@@ -33,10 +43,13 @@ const updateUser = async (id, data) => {
 }
 
 const deleteUser = async (id) => {
-    const user = await User.findById(id);
+    const user = await User.findOne({
+        where:{id: id}
+    });
 
     if(user){
-        await user.remove();
+
+        await user.destroy();
         return true;
     }
 

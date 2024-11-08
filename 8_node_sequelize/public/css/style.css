@@ -111,9 +111,9 @@ form{
 
 .container-card{
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding-top: 10em;
+    align-items: center;
+    padding-top: 4em;
 }
 
 .card {
@@ -152,7 +152,18 @@ form{
     margin-bottom: 20px;
 }
 
-.card button {
+.container-forms{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.form-edit, .form-delete{
+    display: flex;
+    flex:1;
+}
+
+.card .form-edit input, .card .form-delete input{
     width: 100%;
     padding: 10px 20px;
     border: none;
@@ -164,10 +175,9 @@ form{
     transition: background-color 0.3s;
 }
 
-.card button:hover {
+.card .form-edit input:hover, .card .form-delete input:hover{
     background-color: #2980b9;
 }
-
 
   .footer {
     width: 100%;
@@ -179,6 +189,121 @@ form{
     color: white;
     text-align: center;
  }
+
+ /*
+    User update
+ */
+
+ .container-card-update{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2em;
+}
+
+.card-update {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card-update .form-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-part1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2px;
+}
+.form-control-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px;
+}
+
+.form-control-card input{
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.form-part2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.form-checkbox-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:baseline;
+    gap: 10px;
+}
+
+.card-update:hover {
+    transform: scale(1.05);
+  }
+
+  .card-update img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+
+  }
+
+.card-update h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-update p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.container-forms{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.form-edit, .form-delete{
+    display: flex;
+    flex:1;
+}
+
+.card .form-edit input, .card .form-delete input{
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card .form-edit input:hover, .card .form-delete input:hover{
+    background-color: #2980b9;
+}
 
 
 @media (max-width: 768px) {
