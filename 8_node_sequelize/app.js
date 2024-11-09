@@ -35,7 +35,10 @@ app.get('/', (req, res)=>{
     res.render('home');
 })
 
-sequelize.sync().then(()=>{
+sequelize
+//.sync()
+.sync({ force: true })
+.then(()=>{
     console.log('Database connected and synchronized');
 
     app.listen(PORT, () => {
