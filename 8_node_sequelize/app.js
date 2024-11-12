@@ -5,6 +5,7 @@ import sequelize from './src/config/database.js';
 import router from './src/routers/index.js'
 import { fileURLToPath } from 'url';
 import path from 'path';
+import setupAssociations from './src/models/associations.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -35,9 +36,11 @@ app.get('/', (req, res)=>{
     res.render('home');
 })
 
+setupAssociations()
+
 sequelize
-//.sync()
-.sync({ force: true })
+.sync()
+//.sync({ force: true })
 .then(()=>{
     console.log('Database connected and synchronized');
 

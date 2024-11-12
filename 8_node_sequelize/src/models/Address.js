@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from '../config/database.js';
 import User from './User.js';
 
+
 const Address = sequelize.define('Address', {
 
     street:{
@@ -10,27 +11,27 @@ const Address = sequelize.define('Address', {
     },
     number:{
         type: DataTypes.STRING,
-        allowNull: false
+        required: true
     },
     neighborhood:{
         type: DataTypes.STRING,
-        allowNull: false
+        required: true
     },
     city:{
         type: DataTypes.STRING,
-        allowNull: false
+        required: true
     },
     state:{
         type: DataTypes.STRING,
-        allowNull: false
+        required: true
     },
     country:{
         type: DataTypes.STRING,
-        allowNull: false
+        required: true
     }
 })
 
+//Address.belongsTo(User);
 
-Address.belongsTo(User);
 
 export default Address;

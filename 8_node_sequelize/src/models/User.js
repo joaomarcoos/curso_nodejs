@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from '../config/database.js';
 import Address from "./Address.js";
 
+
 const User = sequelize.define('User', {
 
     name: {
@@ -15,7 +16,8 @@ const User = sequelize.define('User', {
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        required: true
     },
     occupation: {
         type: DataTypes.STRING,
@@ -27,6 +29,8 @@ const User = sequelize.define('User', {
 })
 
 
-User.hasMany(Address);
+//User.hasMany(Address);
+
+
 
 export default User;

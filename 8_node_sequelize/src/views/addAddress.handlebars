@@ -1,47 +1,9 @@
-<div class="container-card-update">
-    <div class="card-update">
-        <form action="/api/users/updateUser/{{user.id}}" method="post" class="form-card">
-            <input type="hidden" name="id" value="{{user.id}}">
-            <div class="form-part1">
-                <div class="form-control-card">
-                    <label for="name">Nome:</label>
-                    <input type="text" name="name" placeholder="Digite o nome" value="{{user.name}}">
-                </div>
-            </div>
-
-            <div class="form-part2">
-
-                <div class="form-control-card">
-                    <label for="occupation">Ocupação:</label>
-                    <input type="text" name="occupation" placeholder="Digite sua profissão" value="{{user.occupation}}">
-                </div>
-
-            </div>
-
-            <div class="form-control-card form-checkbox-card">
-                <input type="hidden" name="newsletter" value="false">
-
-                <label for="newsletter">Enviar promoções?:</label>
-                <input type="checkbox" name="newsletter" value="on"
-                {{#if user.newsletter}}checked{{/if}}
-                >
-            </div>
-
-            <div class="container-forms-card">
-                <input type="submit" value="Editar">
-            </div>
-        </form>
-
-        
-    </div>
-</div>
-
 <div class="address-container">
     <form action="/api/address/createAddress" method="post">
 
         <h1>Endereço</h1>
 
-        <input type="hidden" name="userId" value="{{user.id}}">
+        <input type="hidden" name="userId">
 
         <div class="row">
             <div class="form-control-address">
