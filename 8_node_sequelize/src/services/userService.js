@@ -1,3 +1,4 @@
+import Address from '../models/Address.js';
 import User from '../models/User.js'
 
 const createUser = async (data) =>{
@@ -17,9 +18,18 @@ const getAllUsers = async () => {
 }
 
 const getUserById = async (id) => {
-    return await User.findOne({ raw: true,
-        where:{id: id}
-    });
+    try{
+        const user =  await User.findOne({ include: Address,
+            where:{id: id}
+        });
+
+        console.log('Dados getUser by id', user);
+
+        return user;
+    }catch(error){
+        console.log('Erro: ', error.message);
+    }
+    
 }
 
 const updateUser = async (id, data) => {

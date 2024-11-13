@@ -24,7 +24,14 @@ const __dirname = path.dirname(__filename);
 app.set('views', path.join(__dirname, 'src', 'views'));
 
 // Config - Handlebars
-app.engine('handlebars', exphbs.create({}).engine);
+app.engine('handlebars', exphbs.create({
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    },
+    defaultLayout: 'main',
+    
+}).engine);
 app.set('view engine', 'handlebars');
 
 // Config - Static Css
@@ -36,11 +43,11 @@ app.get('/', (req, res)=>{
     res.render('home');
 })
 
-setupAssociations()
+//setupAssociations()
 
 sequelize
 .sync()
-//.sync({ force: true })
+//sync({ force: true })
 .then(()=>{
     console.log('Database connected and synchronized');
 

@@ -31,7 +31,8 @@ const Address = sequelize.define('Address', {
     }
 })
 
-//Address.belongsTo(User);
+User.hasMany(Address);
+Address.belongsTo(User);
 
 
 export default Address;

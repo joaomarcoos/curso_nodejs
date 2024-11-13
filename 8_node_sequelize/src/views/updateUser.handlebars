@@ -89,3 +89,9 @@
         
     </form>
 </div>
+
+<div class="address-list">
+    {{#each user.Addresses}}
+        <p>{{this.id}} - {{this.street}}</p>
+    {{/each}}
+</div>

@@ -24,7 +24,7 @@ const getUserById = async (req, res) =>{
     try{
         const user = await userService.getUserById(req.params.id);
         if(!user) return res.status(404).json({error: 'User not found'});
-        // 
+        //res.json({user});
         res.render('userView', {user})
     } catch (error){
         res.status(500).json({error: error.message});
@@ -36,7 +36,7 @@ const getUpdateUser = async (req, res) =>{
         const user = await userService.getUserById(req.params.id);
         if(!user) return res.status(404).json({error: 'User not found'});
         // 
-        res.render('updateUser', {user})
+        res.render('updateUser', {user: user.get({plain: true})})
     }catch (error){
         res.status(500).json({error: error.message});
     }

@@ -6,7 +6,7 @@
         <p>Profissão: {{user.occupation}}</p>
 
         <div class="container-forms">
-            <form action="/api/users/getUpdateUser/{{user.id}}" class="form-edit">
+            <form action="/api/users/getUpdateUser/{{user.id}}" method="get" class="form-edit">
                 <input type="submit" value="Editar">
             </form>
             <form action="/api/users/deleteUser/{{user.id}}" method="post" class="form-delete">
